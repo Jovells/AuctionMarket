@@ -2,10 +2,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { AuctionAddress, AuctionMarketNFTAddress, MockStableCoinAddress, chain } from "../auctionMarket.config";
-import {Auction} from "../../typechain-types/contracts/Auction";
+import {Auction} from "../../typechain-types/contracts/AuctionMarket.sol";
 import {AuctionMarketNFT} from "../../typechain-types/contracts/AuctionMarketNFT";
 import {MockStableCoin} from "../../typechain-types/contracts/MockStableCoin";
-import AuctionData from "../../artifacts/contracts/Auction.sol/Auction.json";
+import AuctionData from "../../artifacts/contracts/AuctionMarket.sol/Auction.json";
 import AuctionMarketNFTData from "../../artifacts/contracts/AuctionMarketNFT.sol/AuctionMarketNFT.json";
 import MockStableCoinData from "../../artifacts/contracts/MockStableCoin.sol/MockStableCoin.json";
 import { useAccount } from "wagmi";
@@ -37,7 +37,7 @@ export function useContracts(): ContractContext{
   useEffect(() => {
     const currentChainId = parseInt(window?.ethereum?.chainId);
     if(currentChainId !== chain.id && openChainModal){
-      toast("please switch to Telos Network")
+      toast("please switch to Base Sepolia Network")
       openChainModal()
     }
   }, [openChainModal])

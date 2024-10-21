@@ -34,7 +34,7 @@ export default function Address({address, chipProps,  otherProps={}, chars, Typo
           variant="subtitle2"
           {...TypographyProps}
           component="a"
-          href={`https://testnet.teloscan.io/${stringType(address)}/${address}`}
+          href={`https://sepolia.basescan.org/${stringType(address)}/${address}`}
           target="_blank"
           rel="noopener noreferrer"
           sx={{ textDecoration: 'none', color: 'inherit' }}

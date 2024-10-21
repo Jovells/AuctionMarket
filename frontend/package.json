@@ -15,6 +15,7 @@
     "@mui/material": "^5.14.18",
     "@rainbow-me/rainbowkit": "^1.2.0",
     "ethers": "^6.8.1",
+    "moralis": "^2.27.2",
     "next": "14.0.2",
     "nft.storage": "^7.1.1",
     "react": "^18",

@@ -14,7 +14,7 @@ import { useContracts } from "../../hooks/contracts";
 
 
 const CreateAuction = () => {
-  const { Auction, AuctionMarketNFT, MockStableCoin } = useContracts()
+  const { Auction, DesalesNFT, MockStableCoin } = useContracts()
   const { openConnectModal, connectModalOpen } = useConnectModal();
   const account = useAccount();
   const router = useRouter();
@@ -35,10 +35,11 @@ const CreateAuction = () => {
     data.startTime = Time.getTimestampInSeconds(data.startTime);
     data.endTime = Time.getTimestampInSeconds(data.endTime);
     data.preventSniping = data.preventSniping === 'on' ? true : false;
+    data.image = image.name
 
     const toastId = toast.loading("Uploading to IPFS");
       try {
-        const tokenURI = (await storeNFT(image, data)).url;
+        const tokenURI = (await storeNFT(image, data))[1].path;
         toast.loading("Upload Successful. Minting NFT and Creating Auction...", { id: toastId });
   
         const txn = await Auction.createAuction(data.currency, data.startTime, data.endTime, data.startingPrice, tokenURI, data.preventSniping)
@@ -75,6 +76,7 @@ const CreateAuction = () => {
 
   const handleFileChange = (event) => {
     event.target.files[0] && setFile(event.target.files[0]);
+    console.log(event.target.files[0]);
   };
 
   const handleDeleteImage = () => {

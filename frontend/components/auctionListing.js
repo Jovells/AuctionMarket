@@ -38,9 +38,12 @@ const AuctionListing = ({ first = true, auction = {name: 'Honda Civic', seller: 
     //get image and metadata from tokenUri
     async function getMetadata() {
       const tokenUriFromContract = await AuctionMarketNFT.tokenURI(auction.tokenId)
-      const res = await fetch(convertIpfsUrl(tokenUriFromContract));
+      console.log("url", tokenUriFromContract)
+      const res = await fetch(tokenUriFromContract);
       const data = await res.json();
-      const imageUrl = convertIpfsUrl(data.image);
+      console.log("d", data)
+      const extension = data.image?.split('.').pop();
+      const imageUrl = tokenUriFromContract.replace(/\.json$/, extension || '.jpg');
       setNewAuction({...data, ...newAuction, imageUrl});
       console.log(data, newAuction, imageUrl)
       return data

@@ -68,9 +68,23 @@ function AuctionDetails() {
       const obj = auctionDetailsFromContract.toObject()
 
       let auc = convertBigIntsToNumbers(obj);
-      const metadata = await (await fetch(convertIpfsUrl(tokenUriFromContract))).json();
+      
+      let metadata;
+      try {
+        metadata = await (await fetch(tokenUriFromContract)).json();
+      } catch (error) {
+        console.error("Error fetching metadata, retrying in 5 seconds...", error);
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        try {
+          metadata = await (await fetch(tokenUriFromContract)).json();
+        } catch (retryError) {
+          console.error("Retry failed", retryError);
+          throw retryError;
+        }
+      }
       console.log('m', metadata, 'a', auc);
-      const imageUrl = convertIpfsUrl(metadata.image);
+      const extension = metadata.image?.split('.').pop();
+      const imageUrl =tokenUriFromContract.replace(/\json$/, extension || "jpg");
       auc = { ...metadata, ...auc, imageUrl }
       console.log(auc)
       setAuction(auc);
