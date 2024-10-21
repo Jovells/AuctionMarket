@@ -1,4 +1,6 @@
-export default {
+import { createTheme } from '@mui/material/styles';
+
+export default createTheme({
     "breakpoints": {
         "keys": [
             "xs",
@@ -706,4 +708,35 @@ export default {
         "snackbar": 1400,
         "tooltip": 1500
     }
-}
+})
+
+
+
+export const dark  = createTheme({
+    palette: {
+      mode: 'dark',
+      primary: {
+        main: '#90caf9',
+      },
+      secondary: {
+        main: '#f48fb1',
+      },
+      background: {
+        default: '#121212',
+        paper: '#1d1d1d',
+      },
+      text: {
+        primary: '#ffffff',
+        secondary: '#b0b0b0',
+      },
+    },
+    breakpoints: {
+      values: {
+        xs: 0,
+        sm: 600,
+        md: 960,
+        lg: 1280,
+        xl: 1920,
+      },
+    },
+  });

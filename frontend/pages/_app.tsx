@@ -7,8 +7,11 @@ import { auctionMarketWagmiConfig, auctionMarketChains } from "../auctionMarket.
 import { publicProvider } from "wagmi/providers/public";
 import '@rainbow-me/rainbowkit/styles.css';
 import { Header } from "@/components/Header";
-import { Container } from "@mui/material";
+import { Container, CssBaseline } from "@mui/material";
+import { ThemeProvider } from '@mui/material/styles';
 import { Toaster } from "react-hot-toast";
+import { dark } from "../utils/theme";
+import theme from "../utils/theme";
 
 
 const { chains, publicClient } = configureChains([mainnet], [publicProvider()]);
@@ -25,7 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <RainbowKitProvider initialChain={auctionMarketChains[1]} chains={auctionMarketChains}>
         <ContractProvider>
           <Header/>
-          <Container maxWidth={"lg"}>
+          <Container style={{fontFamily: "Titillium Web"}} maxWidth={"lg"}>
           <Component {...pageProps} />
           </Container>
         </ContractProvider>
