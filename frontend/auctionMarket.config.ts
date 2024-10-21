@@ -33,8 +33,8 @@ import { publicProvider } from 'wagmi/providers/public';
   export const auctionMarketChains = chains
   export const auctionMarketWagmiConfig = wagmiConfig
 
-export const AuctionAddress = "0x695C1De27A868d772263c605eD9d9Cc855511754";
-export const AuctionMarketNFTAddress = "0x23DD585F4600cc26744CEE8A3F710cF3546a8967";
-export const MockStableCoinAddress = "0x9d9592dF49D8E36b001C0A1AD65EAAadcD0b58b7";
+export const AuctionAddress = "0x7f9523a452E5DE4149ED667C7D9d1C86a97e43cD";
+export const AuctionMarketNFTAddress = "0x83bd7e53dE6ba627f3f01fA6A8C5d665E0A860DC";
+export const MockStableCoinAddress = "0xDe83458eF3dCfeD8C5e02abc75d7927d9aA5213a";
 
   export const chain = process.env.NODE_ENV === "production" ? productionChain : telosTestnet

@@ -7,7 +7,7 @@ async function main() {
   console.log(
     `MockStableCoin deployed to ${MockStableCoin.target}`
   );
-  const Auction = await ethers.deployContract("Auction", ["0x22e5768fD06A7FB86fbB928Ca14e9D395f7C5363"]);
+  const Auction = await ethers.deployContract("Auction", [MockStableCoin.target]);
 
   await Auction.waitForDeployment();
 
